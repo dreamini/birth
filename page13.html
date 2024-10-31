@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>horse1</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 120px);
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .receipt-header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .title-image {
+            height: auto;
+            max-width: 60%;
+            margin-bottom: -15px;
+        }
+
+        .receipt {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 10px;
+            margin-bottom: 10px;
+            font-size: 4vw;
+        }
+
+        .dotted-line {
+            width: 100%;
+            border-top: 1px dashed #333;
+            margin: 10px auto;
+        }
+
+        .time {
+            font-size: 4vw;
+            padding: 0 10px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html">
+            <img src="horse1.png" alt="horse1" class="image">
+        </a>
+        <div class="dotted-line"></div>
+        <a href="index.html">
+            <div class="receipt-header-container">
+                <img src="birthdreamshop.png" alt="태동하는 꿈 상점" class="title-image">
+            </div>
+        </a>
+        
+        <div class="receipt">
+
+            <div class="dotted-line"></div>
+            <div class="receipt-header">
+                <span>상품명:</span>
+                <span>&lt;들판을 달리는 말을 보는 꿈&gt;</span>
+            </div>
+            <div class="receipt-header">
+                <span>가격:</span>
+                <span>이기심</span>
+            </div>
+
+            <div class="dotted-line"></div>
+
+            <div class="time">
+                <span>[판매일]</span>
+                <span id="purchase-time"></span>
+            </div>
+
+            <div class="dotted-line"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const timeElement = document.getElementById('purchase-time');
+            const now = new Date();
+
+            const days = ['일', '월', '화', '수', '목', '금', '토'];
+            const day = days[now.getDay()];
+
+            const currentTime = now.toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+
+            timeElement.textContent = `${currentTime}`;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
